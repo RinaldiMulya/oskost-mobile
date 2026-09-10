@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:oskost_smartkost/features/home/presentation/screens/home_screen.dart';
-import 'package:oskost_smartkost/page/login_screen.dart';
+import 'package:oskost_smartkost/features/home/presentation/screens/login_screen.dart';
+// import 'package:oskost_smartkost/page/login_screen.dart';
 
 
 final appRouter = GoRouter(
@@ -9,7 +10,7 @@ final appRouter = GoRouter(
     // Define your routes here
     GoRoute(
       path: '/login',
-      builder:(context, state) => const LoginScreen(),
+      builder:(context, state) => const LoginPage(),
     ),
     GoRoute(
       path: '/home',
