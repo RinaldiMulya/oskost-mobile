@@ -273,7 +273,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: <TextSpan>[
                           TextSpan(text: 'Don’t have an account?'),
                           TextSpan(
-                            text: 'Sign Up',
+                            text: ' Sign Up',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.blueAccent, // Menggunakan hex color Anda sebelumnya
