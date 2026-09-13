@@ -9,6 +9,10 @@ class OsKostApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'OsKost',
       routerConfig: appRouter,
+      theme: ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: Color.fromRGBO(254, 248, 245, 100),
+      ),
     );
   }
 }
