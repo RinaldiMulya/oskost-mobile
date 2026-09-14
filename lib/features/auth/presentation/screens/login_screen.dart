@@ -5,20 +5,22 @@ import 'package:go_router/go_router.dart';
 import 'dart:ui';
 
 import 'package:oskost_smartkost/constants/app_colors.dart';
+import 'package:oskost_smartkost/features/auth/presentation/widgets/login_form.dart';
 
-class LoginScreeenOskost extends StatefulWidget {
-  const LoginScreeenOskost({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<LoginScreeenOskost> createState() => _LoginScreeenOskostState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreeenOskostState extends State<LoginScreeenOskost> {
+class _LoginScreenState extends State<LoginScreen> {
   final _identityController = TextEditingController();
   final _passwordController = TextEditingController();
 
   bool _obsecurePassword = true;
   bool _rememberSession = false;
+  bool isChecked = false;
 
   @override
   void dispose() {
@@ -61,7 +63,7 @@ class _LoginScreeenOskostState extends State<LoginScreeenOskost> {
             children: [
               _HeroWelcomeSection(), // image rounded, full di dalam padding
               const SizedBox(height: 16),
-              _LoginFormCard(), // kartu putih form
+              LoginForm(), // kartu putih form
               const SizedBox(height: 16),
               _NewTenantInfoCard(), // kartu putih penghuni baru
               const SizedBox(height: 24),
@@ -192,44 +194,84 @@ Widget _HeroWelcomeSection() {
   );
 }
 
-Widget _LoginFormCard() {
-  return Container(
-    // margin: const EdgeInsets.all(16),
-    padding: const EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          'IDENTITAS PENGHUNI',
-          style: GoogleFonts.plusJakartaSans(
-            color: AppColors.secondaryGreen,
-            fontSize: 12,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 0.5,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: _identityController,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.meeting_room_rounded),
-            hintText: 'Masukkan email atau nomor WA',
-            filled: true,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-      ],
-    ),
-  );
-}
+// Widget _LoginFormCard() {
+//   return Container(
+//     // margin: const EdgeInsets.all(16),
+//     padding: const EdgeInsets.all(20),
+//     decoration: BoxDecoration(
+//       color: Colors.white,
+//       borderRadius: BorderRadius.circular(20),
+//     ),
+//     child: Column(
+//       crossAxisAlignment: CrossAxisAlignment.stretch,
+//       children: [
+//         Text(
+//           'IDENTITAS PENGHUNI',
+//           style: GoogleFonts.plusJakartaSans(
+//             color: AppColors.secondaryGreen,
+//             fontSize: 12,
+//             fontWeight: FontWeight.w800,
+//             letterSpacing: 0.5,
+//           ),
+//         ),
+//         Text(
+//           'LUPA SANDI ?',
+//           style: GoogleFonts.plusJakartaSans(
+//             color: AppColors.secondaryGreen,
+//             fontSize: 12,
+//             fontWeight: FontWeight.w800,
+//             letterSpacing: 0.5,
+//           ),
+//         ),
+//         Text(
+//           'KATA SANDI',
+//           style: GoogleFonts.plusJakartaSans(
+//             color: AppColors.secondaryGreen,
+//             fontSize: 12,
+//             fontWeight: FontWeight.w800,
+//             letterSpacing: 0.5,
+//           ),
+//         ),
+//         const SizedBox(height: 8),
+//         LoginForm(),
+//         const SizedBox(height: 8),
+//         Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: Row(
+//             children: [
+//               //checkbox
+//               Checkbox(
+//                 value: isChecked,
+//                 onChanged: (bool? value) {
+//                   setState(() {
+//                     isChecked = value ?? false;
+//                   });
+//                 },
+//               ),
+
+//               const Expanded(
+//                 child: Text(
+//                   'Simpan sesi di perangkat ini',
+//                   style: TextStyle(fontSize: 16.0),
+//                 ),
+//               ),
+
+//               const Row(
+//                 children: [
+//                   Icon(Icons.lock, color: Colors.green),
+//                   SizedBox(width: 4.0), // Jarak kecil antara ikon dan teks
+//                   Text('Terenkripsi', style: TextStyle(color: Colors.green)),
+//                 ],
+//               ),
+//             ],
+//             // text
+//             // icon enkripsi plus text
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
 Widget _QuickAccessRow() {
   return Container(

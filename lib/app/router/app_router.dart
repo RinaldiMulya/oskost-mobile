@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oskost_smartkost/features/home/presentation/screens/login_screeen_oskost.dart';
+import 'package:oskost_smartkost/features/auth/presentation/screens/login_screen.dart';
 import 'package:oskost_smartkost/features/home/presentation/screens/home_screen.dart';
 import 'package:oskost_smartkost/features/home/presentation/screens/login_screen.dart';
-// import 'package:oskost_smartkost/page/login_screen.dart';
+
 
 
 final appRouter = GoRouter(
@@ -20,7 +20,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/loginOskost',
-      builder: (context, state) => const LoginScreeenOskost()
+      builder: (context, state) => const LoginScreen()
     ),
   ],
 );
