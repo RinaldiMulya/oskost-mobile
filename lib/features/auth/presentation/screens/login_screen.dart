@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'dart:ui';
 
 import 'package:oskost_smartkost/constants/app_colors.dart';
+import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
 import 'package:oskost_smartkost/features/auth/presentation/widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -54,6 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
+        backgroundColor: Color.fromRGBO(254, 248, 245, 100),
       ),
       body: SafeArea(
         top: false,
@@ -61,14 +63,17 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _HeroWelcomeSection(), // image rounded, full di dalam padding
-              const SizedBox(height: 16),
-              LoginForm(), // kartu putih form
-              const SizedBox(height: 16),
-              _NewTenantInfoCard(), // kartu putih penghuni baru
-              const SizedBox(height: 24),
-              _FooterVersion(),
-              const SizedBox(height: 16),
+              _HeroWelcomeSection(),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 20 ),
+                child: LoginForm(),
+              ),
+              const SizedBox(height: 10),
+              _NewTenantInfoCard(),
+              const SizedBox(height: 10),
+              AppFooter(),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -116,13 +121,13 @@ Widget _HeroWelcomeSection() {
                         const Icon(
                           Icons.circle,
                           size: 15,
-                          color: AppColors.secondaryGreen,
+                          color: Color.fromARGB(255, 255, 0, 0),
                         ),
                         const SizedBox(width: 4),
                         Text(
                           'RUANG PENGHUNI',
                           style: GoogleFonts.plusJakartaSans(
-                            color: AppColors.secondaryGreen,
+                            color: AppColors.neutral,
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
                             letterSpacing: 0.5,
@@ -138,7 +143,7 @@ Widget _HeroWelcomeSection() {
 
           // ===== WELCOME =====
           Container(
-            color: const Color.fromARGB(255, 235, 140, 100),
+            color: const Color.fromRGBO(248, 124, 62, 100),
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,10 +154,23 @@ Widget _HeroWelcomeSection() {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(
-                        Icons.verified_user,
-                        size: 15,
-                        color: AppColors.secondaryGreen,
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Icon(
+                            Icons.shield_outlined,
+                            size: 23,
+                            color: AppColors.secondaryGreen,
+                          ),
+                          Positioned(
+                            top: 3,
+                            child: Icon(
+                              Icons.person,
+                              size: 16,
+                              color: AppColors.secondaryGreen,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(width: 4),
                       Text(
@@ -194,110 +212,62 @@ Widget _HeroWelcomeSection() {
   );
 }
 
-// Widget _LoginFormCard() {
-//   return Container(
-//     // margin: const EdgeInsets.all(16),
-//     padding: const EdgeInsets.all(20),
-//     decoration: BoxDecoration(
-//       color: Colors.white,
-//       borderRadius: BorderRadius.circular(20),
-//     ),
-//     child: Column(
-//       crossAxisAlignment: CrossAxisAlignment.stretch,
-//       children: [
-//         Text(
-//           'IDENTITAS PENGHUNI',
-//           style: GoogleFonts.plusJakartaSans(
-//             color: AppColors.secondaryGreen,
-//             fontSize: 12,
-//             fontWeight: FontWeight.w800,
-//             letterSpacing: 0.5,
-//           ),
-//         ),
-//         Text(
-//           'LUPA SANDI ?',
-//           style: GoogleFonts.plusJakartaSans(
-//             color: AppColors.secondaryGreen,
-//             fontSize: 12,
-//             fontWeight: FontWeight.w800,
-//             letterSpacing: 0.5,
-//           ),
-//         ),
-//         Text(
-//           'KATA SANDI',
-//           style: GoogleFonts.plusJakartaSans(
-//             color: AppColors.secondaryGreen,
-//             fontSize: 12,
-//             fontWeight: FontWeight.w800,
-//             letterSpacing: 0.5,
-//           ),
-//         ),
-//         const SizedBox(height: 8),
-//         LoginForm(),
-//         const SizedBox(height: 8),
-//         Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: Row(
-//             children: [
-//               //checkbox
-//               Checkbox(
-//                 value: isChecked,
-//                 onChanged: (bool? value) {
-//                   setState(() {
-//                     isChecked = value ?? false;
-//                   });
-//                 },
-//               ),
-
-//               const Expanded(
-//                 child: Text(
-//                   'Simpan sesi di perangkat ini',
-//                   style: TextStyle(fontSize: 16.0),
-//                 ),
-//               ),
-
-//               const Row(
-//                 children: [
-//                   Icon(Icons.lock, color: Colors.green),
-//                   SizedBox(width: 4.0), // Jarak kecil antara ikon dan teks
-//                   Text('Terenkripsi', style: TextStyle(color: Colors.green)),
-//                 ],
-//               ),
-//             ],
-//             // text
-//             // icon enkripsi plus text
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-
-Widget _QuickAccessRow() {
-  return Container(
-    width: double.infinity,
-    margin: const EdgeInsets.symmetric(horizontal: 16),
-    padding: const EdgeInsets.all(16),
-    color: Colors.grey[200],
-    child: const Text("TEST _QuickAccessRow"),
-  );
-}
-
 Widget _NewTenantInfoCard() {
   return Container(
-    width: double.infinity,
-    margin: const EdgeInsets.all(16),
     padding: const EdgeInsets.all(16),
-    color: Colors.grey[200],
-    child: const Text("TEST _NewTenantInfoCard"),
-  );
-}
-
-Widget _FooterVersion() {
-  return Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(16),
-    child: const Text("TEST _FooterVersion", textAlign: TextAlign.center),
+    decoration: BoxDecoration(
+      color: const Color(0xFFF3EBE1),
+      // borderRadius: BorderRadius.circular(18),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const CircleAvatar(
+          backgroundColor: Color(0xFFF1C7A0),
+          child: Icon(Icons.location_on_outlined, color: Colors.brown),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Penghuni Baru? ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: ' • Tanpa Registrasi Mandiri'),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'Akun hunian dan kunci digital disiapkan langsung oleh '
+                'pengelola saat serah terima kunci fisik kamar Anda.',
+                style: TextStyle(color: Colors.black54, fontSize: 13),
+              ),
+              const SizedBox(height: 10),
+              OutlinedButton.icon(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.support_agent_outlined,
+                  size: 18,
+                  color: AppColors.primaryBrown,
+                ),
+                label: const Text(
+                  'Hubungi Ibu Ayu (Pengelola Kost)',
+                  style: TextStyle(
+                    color: AppColors.primaryBrown
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }
 

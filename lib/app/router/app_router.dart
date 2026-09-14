@@ -10,6 +10,7 @@ final appRouter = GoRouter(
   initialLocation: '/loginOskost',
   routes: [
     // Define your routes here
+    
     GoRoute(
       path: '/login',
       builder:(context, state) => const LoginPage(),
