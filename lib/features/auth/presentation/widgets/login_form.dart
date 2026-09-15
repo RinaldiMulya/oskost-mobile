@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oskost_smartkost/constants/app_colors.dart';
+import 'package:go_router/go_router.dart';
+import 'package:oskost_smartkost/app/router/auth_guard.dart';
+import 'package:oskost_smartkost/app/router/route_paths.dart';
+import 'package:oskost_smartkost/core/constants/app_colors.dart';
+import 'package:oskost_smartkost/core/validator/validator.dart';
 import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
 import 'package:oskost_smartkost/core/widget/text_field/app_text_field.dart';
 
@@ -12,6 +16,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
   final _indetityController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obsecurePassword = true;
@@ -19,11 +24,17 @@ class _LoginFormState extends State<LoginForm> {
   bool isChecked = false;
 
   @override
-  void dispose() => {
-    _indetityController.dispose(),
-    _passwordController.dispose(),
-    super.dispose(),
-  };
+  void dispose() {
+    _indetityController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    if (!(_formKey.currentState?.validate() ?? false)) return;
+    authGuard.login(); // ponytail: ganti POST /api/v1/auth/token saat backend siap
+    context.go(RoutePaths.home);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +44,23 @@ class _LoginFormState extends State<LoginForm> {
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // ===== IDENTITAS =====
-          _fieldLabel('IDENTITAS PENGHUNI'),
-          const SizedBox(height: 8),
-          AppTextField(
-            controller: _indetityController,
-            hintText: 'Masukkan email atau nomor WA',
-            prefixIcon: Icons.meeting_room_rounded,
-            textInputAction: TextInputAction.next,
-          ),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // ===== IDENTITAS =====
+            _fieldLabel('IDENTITAS PENGHUNI'),
+            const SizedBox(height: 8),
+            AppTextField(
+              controller: _indetityController,
+              hintText: 'Masukkan email atau nomor WA',
+              prefixIcon: Icons.meeting_room_rounded,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.emailAddress,
+              validator: validateIdentity,
+              onSubmitted: (_) => _submit(),
+            ),
           const SizedBox(height: 16),
           // ===== KATA SANDI =====
           Row(
@@ -58,6 +74,8 @@ class _LoginFormState extends State<LoginForm> {
             prefixIcon: Icons.key_sharp,
             obscureText: _obsecurePassword,
             textInputAction: TextInputAction.done,
+            validator: validatePassword,
+            onSubmitted: (_) => _submit(),
             suffixIcon: IconButton(
               icon: Icon(
                 _obsecurePassword
@@ -85,7 +103,7 @@ class _LoginFormState extends State<LoginForm> {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            onPressed: () {},
+            onPressed: _submit,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -131,10 +149,8 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               ),
-
               // 👇 Jarak pemisah horizontal antar kedua tombol
               const SizedBox(width: 16),
-
               // === TOMBOL 2: KODE OTP WA ===
               Expanded(
                 child: ElevatedButton(
@@ -169,7 +185,8 @@ class _LoginFormState extends State<LoginForm> {
             ],
           ),
           const SizedBox(height: 8),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -193,7 +210,7 @@ class _LoginFormState extends State<LoginForm> {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () {
-          // TODO: navigasi ke reset password (context.push)
+          context.push(RoutePaths.forgotPassword);
         },
         style: TextButton.styleFrom(
           padding: EdgeInsets.zero,
@@ -222,7 +239,7 @@ class _LoginFormState extends State<LoginForm> {
             Set<WidgetState> states,
           ) {
             if (states.contains(WidgetState.selected)) {
-              return AppColors.tertiaryTan; // Warna saat dicentang
+              return AppColors.tertiaryDim; // Warna saat dicentang
             }
             return Colors.transparent; // Warna latar belakang saat kosong
           }),

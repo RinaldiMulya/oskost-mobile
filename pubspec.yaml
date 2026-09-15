@@ -66,6 +66,10 @@ flutter:
     - assets/images/b.jpg
     - assets/images/c.jpg
     - assets/images/d.jpg
+    - assets/images/e.jpg
+    - assets/icons/home.png
+    - assets/icons/notif.png
+    - assets/icons/kingSize.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

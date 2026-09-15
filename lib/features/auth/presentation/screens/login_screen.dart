@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 
-import 'dart:ui';
-
-import 'package:oskost_smartkost/constants/app_colors.dart';
+import 'package:oskost_smartkost/core/constants/app_colors.dart';
 import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
+import 'package:oskost_smartkost/core/widget/sheets/app_pill.dart';
 import 'package:oskost_smartkost/features/auth/presentation/widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -113,7 +112,7 @@ Widget _HeroWelcomeSection() {
                 Positioned(
                   top: 15,
                   left: 12,
-                  child: _pill(
+                  child: AppPill(
                     background: Colors.white.withValues(alpha: 0.1),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -149,7 +148,7 @@ Widget _HeroWelcomeSection() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 12),
-                _pill(
+                AppPill(
                   background: Colors.white.withValues(alpha: 0.25),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -271,43 +270,4 @@ Widget _NewTenantInfoCard() {
   );
 }
 
-class _pill extends StatelessWidget {
-  final Widget child;
-  final Color background;
-  final double borderRadius;
 
-  const _pill({
-    required this.child,
-    required this.background,
-    this.borderRadius = 20,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isGlass = background == Colors.transparent || background.a < 1.0;
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: isGlass ? 4.0 : 0.0,
-          sigmaY: isGlass ? 2.0 : 0.0,
-        ),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: background,
-            borderRadius: BorderRadius.circular(20),
-            border: isGlass
-                ? Border.all(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    width: 1.0,
-                  )
-                : null,
-          ),
-          child: child,
-        ),
-      ),
-    );
-  }
-}
