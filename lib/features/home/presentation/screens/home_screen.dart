@@ -4,7 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oskost_smartkost/app/router/auth_guard.dart';
 import 'package:oskost_smartkost/core/constants/app_colors.dart';
 import 'package:oskost_smartkost/app/router/route_paths.dart';
+import 'package:oskost_smartkost/core/widget/card/app_card_Payment.dart';
+import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
 import 'package:oskost_smartkost/core/widget/sheets/app_pill.dart';
+import 'package:oskost_smartkost/features/home/presentation/widgets/greeting_section.dart';
+import 'package:oskost_smartkost/features/home/presentation/widgets/room_info_card.dart';
+import 'package:oskost_smartkost/features/home/presentation/widgets/home_hero_banner.dart';
+import 'package:oskost_smartkost/features/home/presentation/widgets/contract_duration_card.dart';
+import 'package:oskost_smartkost/features/home/presentation/widgets/quick_menu_grid.dart';
 
 class HomePage extends StatefulWidget {
   final int count;
@@ -90,99 +97,77 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Greeting overline ──
-              Text(
-                'Selamat Pagi,',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textMuted, // #68635D
-                ),
-              ),
-          
-              // ── Nama (Noto Serif, editorial) ──
-              Text(
-                'Rinaldi Mulya Pratama',
-                style: GoogleFonts.notoSerif(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.neutral,
-                  height: 1.2,
-                ),
-              ),
-          
+              const GreetingSection(name: 'Rinaldi Mulya Pratama'),
               const SizedBox(height: 24),
-          
-              // ── Card Kamar ──
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceCard, // #EFECE6
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.borderSubtle),
-                ),
-                child: Row(
-                  children: [
-                    // Icon enclosure (taupe rounded square)
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: AppColors.fillTerracotta, // terracotta 8%
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Icon(
-                        Icons.bed_outlined,
-                        size: 24,
-                        color: AppColors.primaryBrown,
-                      ),
+              const RoomInfoCard(),
+              const SizedBox(height: 16),
+              const HomeHeroBanner(),
+              const SizedBox(height: 16),
+              ContractDurationCard(
+                startDate: DateTime(2025, 9, 15),
+                endDate: DateTime(2026, 10, 15),
+              ),
+              const SizedBox(height: 16),
+              AppCardPayment(
+                bulanTagihan: 'September 2026',
+                jumlahTagihan: 'Rp 2.528.000',
+                jatuhTempo: '6 Sep 2026',
+                status: 'BELUM BAYAR',
+                onBayar: () {
+                  print('Tombol bayar diklik!');
+                },
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 20,vertical: 10),
+                child: QuickMenuGrid(
+                  items: [
+                    QuickMenuItem(
+                      icon: Icons.receipt_long_outlined,
+                      label: 'Tagihan',
+                      onTap: () {},
                     ),
-                    const SizedBox(width: 12),
-          
-                    // Teks kamar
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Kamar 005 — VIP Suite',
-                            style: GoogleFonts.plusJakartaSans(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.neutral,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            'OsKost Pulo Jahe',
-                            style: GoogleFonts.plusJakartaSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textMuted,
-                            ),
-                          ),
-                        ],
-                      ),
+                    QuickMenuItem(
+                      icon: Icons.build_outlined,
+                      label: 'Komplain',
+                      onTap: () {},
                     ),
-          
-                    // Badge verified (moss)
-                    Container(
-                      width: 36,
-                      height: 36,
-                      decoration: const BoxDecoration(
-                        color: AppColors.successWash, // #EFF2EC
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.verified_outlined,
-                        size: 20,
-                        color: AppColors.secondaryGreen,
-                      ),
+                    QuickMenuItem(
+                      icon: Icons.history_outlined,
+                      label: 'Riwayat',
+                      onTap: () {},
+                    ),
+                    QuickMenuItem(
+                      icon: Icons.support_agent_outlined,
+                      label: 'Bantuan',
+                      onTap: () {},
+                    ),
+                    QuickMenuItem(
+                      icon: Icons.calendar_month_outlined,
+                      label: 'Perpanjang',
+                      onTap: () {},
+                    ),
+                    QuickMenuItem(
+                      icon: Icons.cleaning_services_outlined,
+                      label: 'Kebersihan',
+                      onTap: () {},
+                    ),
+                    QuickMenuItem(
+                      icon: Icons.wifi_outlined,
+                      label: 'WiFi',
+                      onTap: () {},
+                    ),
+                    QuickMenuItem(
+                      icon: Icons.more_horiz,
+                      label: 'Lainnya',
+                      onTap: () {},
                     ),
                   ],
                 ),
               ),
+              const SizedBox(height: 16),
+              AppFooter(),
+              const SizedBox(height: 16),
             ],
           ),
         ),
