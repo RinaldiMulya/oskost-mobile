@@ -95,7 +95,7 @@ Widget _HeroWelcomeSection() {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset('assets/images/b.jpg', fit: BoxFit.cover),
+                Image.asset('assets/images/e.jpg', fit: BoxFit.cover),
                 const DecoratedBox(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(

@@ -26,7 +26,7 @@ class QuickMenuGrid extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 6,
+            crossAxisCount: 4,
             mainAxisSpacing: 4,
             crossAxisSpacing: 4,
             childAspectRatio: 0.85,
