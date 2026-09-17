@@ -73,6 +73,15 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 10),
               AppFooter(),
               const SizedBox(height: 10),
+              // ponytail: training debug only, hapus saat rilis
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: OutlinedButton(
+                  onPressed: () => context.go('/training/login'),
+                  child: const Text('🧪 Buka Training Login'),
+                ),
+              ),
+              const SizedBox(height: 10),
             ],
           ),
         ),

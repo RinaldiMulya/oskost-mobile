@@ -49,3 +49,5 @@ app.*.map.json
 
 docs
 docsli
+graphify-out/
+.code-review-graph/
