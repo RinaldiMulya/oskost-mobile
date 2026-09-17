@@ -38,11 +38,11 @@ class _PrimaryCtaButtonState extends State<PrimaryCtaButton> {
           width: double.infinity,
           height: 56,
           decoration: BoxDecoration(
-            color: AppColors.primaryContainer,
+            color: const Color.fromARGB(255, 140, 98, 57),
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.06),
+                color: Colors.black.withValues(alpha: 0.10),
                 blurRadius: 6,
                 offset: const Offset(0, 2),
               ),
