@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:oskost_smartkost/core/constants/app_colors.dart';
 import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
 import 'package:oskost_smartkost/core/widget/sheets/app_pill.dart';
-import 'package:oskost_smartkost/features/auth/presentation/widgets/login_form.dart';
+import '../widgets/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

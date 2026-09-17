@@ -55,8 +55,22 @@ class AppColors {
   static const Color textMuted = Color(0xFF68635D); // label/overline
   static const Color textTertiary = Color(0xFF948E85); // inactive/data tersier
   static const Color onSurface = Color(0xFF1D1B19);
+  static const Color onSurfaceVariant = Color(0xFF68635D); // alias for textMuted
   static const Color inverseSurface = Color(0xFF32302E);
   static const Color inverseOnSurface = Color(0xFFF5F0EC);
+
+  // ══════════════════════════════════════════════════════════
+  // MATERIAL 3 CONTAINER COLORS — For M3 component theming
+  // ══════════════════════════════════════════════════════════
+  static const Color primaryContainer = Color(0xFFFFDCBF); // primaryWash
+  // static const Color onPrimaryContainer = Color(0xFF413933); // dark brown for on primary container
+  static const Color onPrimary = Color(0xFFFFFFFF); // white for on primary
+  // static const Color secondaryContainer = Color(0xFFDCE6CF);
+  // static const Color onSecondaryContainer = Color(0xFF414939);
+  // static const Color tertiaryContainer = Color(0xFF8A633B);
+  static const Color onTertiaryContainer = Color(0xFF413933);
+  static const Color tertiaryFixed = Color(0xFFEEBD8E); // tertiaryDim
+  static const Color onTertiaryFixedVariant = Color(0xFF6F4B26); // tertiary
 
   // ══════════════════════════════════════════════════════════
   // STATUS

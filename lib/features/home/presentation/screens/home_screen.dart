@@ -1,11 +1,11 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:oskost_smartkost/core/widget/card/app_card_Payment.dart';
 import 'package:oskost_smartkost/core/widget/footer/app_footer.dart';
-import 'package:oskost_smartkost/features/home/presentation/widgets/greeting_section.dart';
-import 'package:oskost_smartkost/features/home/presentation/widgets/room_info_card.dart';
-import 'package:oskost_smartkost/features/home/presentation/widgets/home_hero_banner.dart';
-import 'package:oskost_smartkost/features/home/presentation/widgets/contract_duration_card.dart';
-import 'package:oskost_smartkost/features/home/presentation/widgets/quick_menu_grid.dart';
+import '../widgets/greeting_section.dart';
+import '../widgets/room_info_card.dart';
+import '../widgets/home_hero_banner.dart';
+import '../widgets/contract_duration_card.dart';
+import '../widgets/quick_menu_grid.dart';
 
 class HomePage extends StatelessWidget {
   final int count;

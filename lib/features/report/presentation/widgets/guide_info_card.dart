@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oskost_smartkost/core/constants/app_colors.dart';
 
-class RoomInfoCard extends StatelessWidget {
+class GuideinfoCard extends StatelessWidget {
   final String roomName;
   final String location;
   final bool verified;
-  const RoomInfoCard({
+  const GuideinfoCard({
     super.key,
     this.roomName = 'Panduan Laporan Kost ',
     this.location = 'Cek estimasi respons & standar teknisi',
