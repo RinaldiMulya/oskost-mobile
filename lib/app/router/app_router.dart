@@ -17,14 +17,10 @@ import 'package:oskost_smartkost/features/profile/presentation/screens/profile_s
 import 'package:oskost_smartkost/features/report/presentation/screens/report_detail_screen.dart';
 import 'package:oskost_smartkost/features/report/presentation/screens/report_new_screen.dart';
 import 'package:oskost_smartkost/features/report/presentation/screens/reports_screen.dart';
-import 'package:oskost_smartkost/training/storage/login_training_screen.dart';
-import 'package:oskost_smartkost/training/storage/splash_screen.dart';
-import 'package:oskost_smartkost/training/storage/training_home_screen.dart';
-
 // ponytail: MVP router only; add /admin/* when Web 2.0 admin needed. Guard is in-memory now, swap to secure_storage+JWT later.
 final appRouter = GoRouter(
-  initialLocation: RoutePaths.login, // buka app langsung ke login
-  refreshListenable: authGuard, // kalau satpam teriak "status berubah!", router cek ulang
+  initialLocation: RoutePaths.login,
+  refreshListenable: authGuard,
   debugLogDiagnostics: true,
   redirect: (context, state) {
 
@@ -137,20 +133,6 @@ final appRouter = GoRouter(
     GoRoute(
       path: RoutePaths.notifications,
       builder: (context, state) => const NotificationsScreen(),
-    ),
-
-    // --- training (isolated, not guarded) ---
-    GoRoute(
-      path: '/training/splash',
-      builder: (context, state) => const TrainingSplashScreen(),
-    ),
-    GoRoute(
-      path: '/training/login',
-      builder: (context, state) => const LoginTrainingScreen(),
-    ),
-    GoRoute(
-      path: '/training/home',
-      builder: (context, state) => const TrainingHomeScreen(),
     ),
   ],
   errorBuilder: (context, state) => Scaffold(

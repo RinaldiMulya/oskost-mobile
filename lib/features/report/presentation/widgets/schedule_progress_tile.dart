@@ -32,12 +32,12 @@ class ScheduleProgressTile extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.schedule, size: 15, color: AppColors.primaryContainer),
+                  const Icon(Icons.schedule, size: 15, color: AppColors.primaryDark),
                   const SizedBox(width: 4),
                   Text(
                     statusLabel,
                     style: textTheme.labelSmall?.copyWith(
-                      color: AppColors.primaryContainer,
+                      color: AppColors.primaryDark,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -53,7 +53,7 @@ class ScheduleProgressTile extends StatelessWidget {
               value: progress,
               minHeight: 6,
               backgroundColor: AppColors.surfaceContainerHighest,
-              valueColor: const AlwaysStoppedAnimation(AppColors.primaryContainer),
+              valueColor: const AlwaysStoppedAnimation(AppColors.primaryLight),
             ),
           ),
         ],

@@ -8,7 +8,7 @@ class GuideinfoCard extends StatelessWidget {
   final bool verified;
   const GuideinfoCard({
     super.key,
-    this.roomName = 'Panduan Laporan Kost ',
+    this.roomName = 'Panduan Pembuatan Laporan Kost ',
     this.location = 'Cek estimasi respons & standar teknisi',
     this.verified = true,
   });
@@ -32,7 +32,7 @@ class GuideinfoCard extends StatelessWidget {
               color: AppColors.fillTerracotta,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.bed_outlined, size: 24, color: AppColors.primaryBrown),
+            child: const Icon(Icons.receipt_long, size: 24, color: AppColors.primaryBrown),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -51,10 +51,10 @@ class GuideinfoCard extends StatelessWidget {
           ),
           if (verified)
             Container(
-              width: 36,
-              height: 36,
+              width: 38,
+              height: 38,
               decoration: const BoxDecoration(color: AppColors.successWash, shape: BoxShape.circle),
-              child: const Icon(Icons.arrow_outward, size: 20, color: AppColors.neutral),
+              child: const Icon(Icons.arrow_outward, size: 24, color: AppColors.neutral),
             ),
         ],
       ),

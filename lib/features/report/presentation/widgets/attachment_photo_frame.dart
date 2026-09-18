@@ -24,7 +24,7 @@ class AttachmentPhotoFrame extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Container(color: AppColors.surfaceContainerHigh),
-            Image.network(
+            Image.asset(
               imageUrl,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Container(
@@ -32,12 +32,12 @@ class AttachmentPhotoFrame extends StatelessWidget {
                 child: const Icon(Icons.image_not_supported_outlined,
                     color: AppColors.inverseOnSurface),
               ),
-              loadingBuilder: (context, child, progress) {
-                if (progress == null) return child;
-                return const Center(
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                );
-              },
+              // loadingBuilder: (context, child, progress) {
+              //   if (progress == null) return child;
+              //   return const Center(
+              //     child: CircularProgressIndicator(strokeWidth: 2),
+              //   );
+              // },
             ),
             Positioned(
               bottom: 10,
